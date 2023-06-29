@@ -144,8 +144,8 @@ flowchart LR
     
     subgraph alpine["fa:fa-server Alpine"]
         direction LR
-        alpine_terminal1["(1. preparation)\nfa:fa-terminal terminal"]
-        alpine_terminal2["(2. implementation)\nfa:fa-terminal terminal"]
+        alpine_terminal1["(1. Prepare code)\nfa:fa-terminal terminal"]
+        alpine_terminal2["(2. Implement code)\nfa:fa-terminal terminal"]
         git["fa:fa-git clone or pull"]
         subgraph development_and_sync ["fa:fa-truck Code delivery to Alpine"]
             subgraph repo["fa:fa-github This repo"]
@@ -182,12 +182,22 @@ style alpine_terminal2 fill:#D1FAE5,stroke:#444444;
 ```
 
 This section will cover how Alpine may be used with this repository to run example Python code.
-Generally, we'll cover this in two primary steps: [1. preparation](#1-preparation) and [2. implementation](#2-implementation).
+Generally, we'll cover this in two primary steps:[0. Gain Alpine access](#0-gain-alpine-access), [1. preparation](#1-preparation) and [2. implementation](#2-implementation).
 
-### 1. Preparation
+### 0. Gain Alpine access
 
-First we need to prepare our code within Alpine.
+First you will need to gain access to Alpine.
+This access is provided to members of the University of Colorado Anschutz through [RMACC](https://rmacc.org/) and is separate from other credentials which may be provided by default in your role.
+Please see the following guide from the University of Colorado Boulder's Research Computing covering requesting access and generally how this works for members of the University of Colorado Anschutz.
+
+- __RMACC Access to Alpine:__ [https://curc.readthedocs.io/en/latest/access/rmacc.html](https://curc.readthedocs.io/en/latest/access/rmacc.html)
+
+### 1. Prepare code
+
+Next we need to prepare our code within Alpine.
 We do this to balance the fact that we may develop and source control code outside of Alpine and needing to periodically synchronize it with updates.
 In the case of this example work, we assume git as an interface for Github as the source control host.
 
-### 2. Implementation
+Below you'll find the general steps associated with this process.
+
+### 2. Implement code
