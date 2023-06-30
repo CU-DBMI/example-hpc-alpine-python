@@ -92,7 +92,7 @@ module load anaconda/2022.10
 
 # remove any existing environments that happen to have
 # the same exact name.
-conda env remove --name example_env
+conda env remove --name example_env -y
 
 # next create the environment from the yaml file
 conda env create -f environment.yml
