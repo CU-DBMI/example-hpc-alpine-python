@@ -116,7 +116,8 @@ Slurm helps coordinate shared and configurable access to the compute resources.
 Data for or from Slurm work may be stored temporarily on local storage or on user-specific external (remote) storage.
 
 > ℹ️ __Wait, what are "nodes"?__
-A simplified way to understand the architecture of Slurm on Alpine is through login and compute "nodes" (computers).
+>
+> A simplified way to understand the architecture of Slurm on Alpine is through login and compute "nodes" (computers).
 Login nodes act as a way to prepare and submit processes which will be completed on compute nodes.
 Login nodes have limited resource access and are not recommended for running procedures.
 
@@ -299,7 +300,8 @@ Below you'll find the general steps associated with this process.
 <a id="prepare-code-authenticate"></a>
 
 > ℹ️ __What if I need to authenticate with Github?__
-There are times where you may need to authenticate with Github in order to accomplish your work.
+>
+> There are times where you may need to authenticate with Github in order to accomplish your work.
 From a Github perspective, you will want to use either Github Personal Access Tokens (PAT) (recommended by Github) or SSH keys associated with the `git` client on Alpine.
 Note: if you are prompted for a username and password from `git` when accessing a Github resource, the password is now associated with other keys like PAT's instead of your user's password ([reference](https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down)).
 See the following guide from Github for more information on how authentication through `git` to Github works:
