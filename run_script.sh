@@ -91,7 +91,7 @@ module load anaconda/2022.10
 ########################################################
 
 # first create the environment from the yaml file
-conda env create -f environment.yaml
+conda env create -f environment.yml
 
 # then activate the environment
 conda activate example_env
