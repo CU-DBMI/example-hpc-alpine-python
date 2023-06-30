@@ -321,7 +321,12 @@ Below you'll find the general steps associated with this process.
 ### 2. ⚙️ Implement code on Alpine
 
 After our code is available on Alpine we're ready to run it using Slurm and related resources.
+We use Anaconda to build a Python environment with specified packages for reproducibility.
 The main goal of the Python code related to this work is to create a CSV file with random data at a specified location.
 We'll use [Slurm's `sbatch` command](https://slurm.schedmd.com/sbatch.html), which submits batch scripts to Slurm using various options.
 
-### 2. 📂 Gather data results
+1. Use the `sbatch` command with exported variable `CSV_FILEPATH`.<br> `sbatch --export=CSV_FILEPATH="/projects/$USER/example_data.csv" run_script.sh`
+1. After a short moment, use the [`tail`](<https://en.wikipedia.org/wiki/Tail_(Unix)>) command to observe the log file created by Slurm for this sbatch submission. This file can help you understand where things are at and if anything went wrong.<br> `tail -f example-hpc-alpine-python.out`
+1. Once you see that the work has completed from the log file, take a look at the top 2 lines of the data file using the [`head`](<https://en.wikipedia.org/wiki/Head_(Unix)>) command to verify the data arrived as expected (column names with random values):<br> `head -n 2 example_data.csv`
+
+### 3. 📂 Transfer data results

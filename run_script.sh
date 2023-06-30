@@ -40,7 +40,7 @@
 # %j - job ID
 # %a - job array index
 # %A - job array job ID
-#SBATCH --output=example-hpc-alpine-python.%j.out
+#SBATCH --output=example-hpc-alpine-python.out
 
 # Sets a limit on the total time this work may take.
 # The format below is in the form of hours:minutes:seconds.
