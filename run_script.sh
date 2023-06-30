@@ -65,6 +65,17 @@
 #SBATCH --mail-type=ALL
 
 ########################################################
+# Initialization through acompile script:
+# ---------------------------------------
+# Below we use the acompile script to help 
+# gain access to the module package and
+# prepare to run our work on Slurm.
+########################################################
+
+# runs the acompile script with default configurations
+acompile
+
+########################################################
 # Module package commands:
 # ------------------------
 # Next, we use the module package to help load 
