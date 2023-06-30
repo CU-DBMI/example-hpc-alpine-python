@@ -108,5 +108,16 @@ conda activate example_env
 
 # run the python file example.py which takes an argument
 # as a filepath for exporting data which we pass in here
-# shell script file argument in the form of `$1`
+# from an sbatch exported variable name which is
+# received as a named argparse variable within Python
+# using the same name.
 python code/example.py --CSV_FILENAME=$CSV_FILEPATH
+
+########################################################
+# Send an end signal for the logs:
+# --------------------------------
+# Here we add a simple echo statement to indicate
+# within the logs that the work is completed.
+########################################################
+
+echo "run_script.sh work finished!"
