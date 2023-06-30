@@ -11,7 +11,7 @@
 #
 #
 # Referenced with modifications from:
-# https://curc.readthedocs.io/en/latest/clusters/alpine/examples.html#full-example-job-script
+# https://curc.readthedocs.io/en/latest/clusters/alpine/examples.html
 ########################################################
 
 ########################################################
@@ -25,7 +25,7 @@
 
 # Indicates which Alpine-specific hardware partition you'd
 # like to make use of to accomplish the work in this script.
-# See: https://curc.readthedocs.io/en/latest/running-jobs/job-resources.html#partitions
+# See: https://curc.readthedocs.io/en/latest/running-jobs/job-resources.html
 #SBATCH --partition=amilan
 
 # Provide a specific name used for identifying the job 
@@ -46,7 +46,7 @@
 
 # Sets certain Alpine-specific characteristics the Slurm work
 # performed. Can be one of: normal, long, mem.
-# See: https://curc.readthedocs.io/en/latest/running-jobs/job-resources.html#quality-of-service
+# See: https://curc.readthedocs.io/en/latest/running-jobs/job-resources.html
 #SBATCH --qos=normal
 
 # Advises Slurm about the minimum nodes necessary for completing
