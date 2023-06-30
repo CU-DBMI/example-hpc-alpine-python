@@ -87,6 +87,9 @@ module load anaconda/2022.10
 # for running the Python code below.
 ########################################################
 
+# init conda
+conda init bash
+
 # first create the environment from the yaml file
 conda env create -f environment.yaml
 
