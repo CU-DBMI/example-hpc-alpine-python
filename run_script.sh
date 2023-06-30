@@ -4,14 +4,13 @@
 # File description:
 # An example run script for use with:
 # https://github.com/CU-DBMI/example-hpc-alpine-python
-# 
+#
 # Expects the following sbatch exports:
 #   CSV_FILEPATH:
-#       a string which indicates the filepath for
-#       a CSV to be created by the python process.
+#       A filepath for storing a CSV data file.
 #
 # Example Alpine command line usage:
-#   $ sbatch --export=CSV_FILEPATH="/projects/$USER/somewhere" run_script.sh
+#   $ sbatch --export=CSV_FILEPATH="/projects/$USER/data.csv" run_script.sh
 #
 # Referenced with modifications from:
 # https://curc.readthedocs.io/en/latest/clusters/alpine/examples.html
@@ -31,7 +30,7 @@
 # See: https://curc.readthedocs.io/en/latest/running-jobs/job-resources.html
 #SBATCH --partition=amilan
 
-# Provide a specific name used for identifying the job 
+# Provide a specific name used for identifying the job
 # as it proceeds through Slurm.
 #SBATCH --job-name=example-hpc-alpine-python
 
@@ -56,7 +55,7 @@
 # the work included in this script.
 #SBATCH --nodes=1
 
-# Advises Slurm about the maximum number of tasks involved 
+# Advises Slurm about the maximum number of tasks involved
 # with batch processing.
 #SBATCH --ntasks=4
 
@@ -70,7 +69,7 @@
 ########################################################
 # Module package commands:
 # ------------------------
-# Next, we use the module package to help load 
+# Next, we use the module package to help load
 # software which is pre-loaded on Alpine.
 ########################################################
 
@@ -84,7 +83,7 @@ module purge
 module load anaconda/2022.10
 
 ########################################################
-# Anaconda environment manangement:
+# Anaconda environment management:
 # ---------------------------------
 # Here we load the Anaconda environment to be used
 # for running the Python code below.
@@ -110,4 +109,4 @@ conda activate example_env
 # run the python file example.py which takes an argument
 # as a filepath for exporting data which we pass in here
 # shell script file argument in the form of `$1`
-python code/example.py $CSV_FILEPATH
+python code/example.py --CSV_FILENAME=$CSV_FILEPATH

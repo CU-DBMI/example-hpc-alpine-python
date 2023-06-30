@@ -1,23 +1,25 @@
 """
 An example Python file which creates random data and exports it to a location specified
-by way of a 
+by way of a
 """
-import sys
+import argparse
 
 import numpy as np
 import pandas as pd
 
-# take an input from sys argsv
-output_file = sys.argv[1]
+# gather named input from argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("--CSV_FILENAME", help="A filepath for storing a CSV data file.")
+args = parser.parse_args()
 
 # setup some rows
-nrows = 10000
-ncols = 500
+NROWS = 10000
+NCOLS = 500
 
 # form a dataframe using randomized data
 df = pd.DataFrame(
-    np.random.rand(nrows, ncols), columns=[f"col_{num}" for num in range(0, ncols)]
+    np.random.rand(NROWS, NCOLS), columns=[f"col_{num}" for num in range(0, NCOLS)]
 )
 
 # export the data to parquet
-df.to_csv(output_file)
+df.to_csv(args.CSV_FILENAME)

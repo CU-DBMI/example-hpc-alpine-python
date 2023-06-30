@@ -54,7 +54,7 @@ repos:
         entry: pylint
         language: python
         types: [python]
-        args: ["--disable=X"]
+        # args: ["--disable=X"]
         additional_dependencies:
             - "numpy"
             - "pandas"

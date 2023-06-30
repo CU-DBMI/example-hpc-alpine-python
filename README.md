@@ -8,7 +8,7 @@ flowchart LR
         subgraph conda_env["&nbsp;🌐 Anaconda environment &nbsp;"]
             python_code["📄 Python code"]
         end
-        
+
     end
     subgraph alpine["🖥️ Alpine"]
         subgraph spacer1[" "]
@@ -89,7 +89,7 @@ flowchart LR
             hardware["⚙️ Compute\nResources"]
             modules["💿 Software via\nmodules pkg"]
         end
-        
+
         subgraph storage["📂 Storage"]
             local_storage["📁 Local Storage\n(sometimes temporary)"]
         end
@@ -116,8 +116,8 @@ Data for or from Slurm work may be stored temporarily on local storage or on use
 > ℹ️ __Wait, what are "nodes"?__
 >
 > A simplified way to understand the architecture of Slurm on Alpine is through login and compute "nodes" (computers).
-Login nodes act as a way to prepare and submit processes which will be completed on compute nodes.
-Login nodes have limited resource access and are not recommended for running procedures.
+> Login nodes act as a way to prepare and submit processes which will be completed on compute nodes.
+> Login nodes have limited resource access and are not recommended for running procedures.
 
 One can interact with Slurm on Alpine by use of [Slurm interfaces and directives](https://curc.readthedocs.io/en/latest/clusters/alpine/examples.html).
 A quick way of accessing Alpine resources is through the use of the `acompile` command, which references a script with common Slurm configurations.
@@ -188,19 +188,19 @@ Be sure to follow [the Acceptable data storage and use policies of Alpine](https
 These may be distinguished in two ways:
 
 1. __Alpine local storage (sometimes temporary):__ Alpine provides a number of temporary data storage locations for accomplishing your work.
-⚠️ _Note: some of these locations may be periodically purged and are not a suitable location for long-term data hosting ([see here for more information](https://curc.readthedocs.io/en/latest/additional-resources/policies.html#scratch-file-purge))!_<br>
-Storage locations available ([see this link for full descriptions](https://curc.readthedocs.io/en/latest/compute/filesystems.html)):
+   ⚠️ _Note: some of these locations may be periodically purged and are not a suitable location for long-term data hosting ([see here for more information](https://curc.readthedocs.io/en/latest/additional-resources/policies.html#scratch-file-purge))!_<br>
+   Storage locations available ([see this link for full descriptions](https://curc.readthedocs.io/en/latest/compute/filesystems.html)):
 
-    - __Home filesystem:__ 2 GB of backed up space under `/home/$USER` (where `$USER` is your RMACC or Alpine username).
-    - __Projects filesystem:__ 250 GB of backed up space under `/projects/$USER` (where `$USER` is your RMACC or Alpine username).
-    - __Scratch filesystem:__ 10 TB (10,240 GB) of space __*which is not backed up*__ under `/scratch/alpine/$USER` (where `$USER` is your RMACC or Alpine username).
+   - __Home filesystem:__ 2 GB of backed up space under `/home/$USER` (where `$USER` is your RMACC or Alpine username).
+   - __Projects filesystem:__ 250 GB of backed up space under `/projects/$USER` (where `$USER` is your RMACC or Alpine username).
+   - __Scratch filesystem:__ 10 TB (10,240 GB) of space __*which is not backed up*__ under `/scratch/alpine/$USER` (where `$USER` is your RMACC or Alpine username).
 
-2. __External / remote storage:__ Users are encouraged to explore external data storage options for long-term hosting.<br>
-Examples may include the following:
+1. __External / remote storage:__ Users are encouraged to explore external data storage options for long-term hosting.<br>
+   Examples may include the following:
 
-    - __[Petalibrary](https://www.colorado.edu/rc/resources/petalibrary)__: subsidized external storage host from University of Colorado Boulder's Research Computing (requires specific arrangements outside of Alpine).
-    - __Cloud hosting:__ [object storage](https://en.wikipedia.org/wiki/Object_storage) and related data hosting options from cloud providers like [Microsoft Azure](https://azure.microsoft.com/en-us), [Google Cloud](https://cloud.google.com/) ([internal CU Anschutz GC information](https://www.cuanschutz.edu/offices/office-of-information-technology/tools-services/google-cloud-platform)), or [Amazon Web Services](https://aws.amazon.com/).
-    - __Others:__ additional options include third-party "storage as a service" offerings like Google Drive or Dropbox and/or external servers maintained by other groups.
+   - __[Petalibrary](https://www.colorado.edu/rc/resources/petalibrary)__: subsidized external storage host from University of Colorado Boulder's Research Computing (requires specific arrangements outside of Alpine).
+   - __Cloud hosting:__ [object storage](https://en.wikipedia.org/wiki/Object_storage) and related data hosting options from cloud providers like [Microsoft Azure](https://azure.microsoft.com/en-us), [Google Cloud](https://cloud.google.com/) ([internal CU Anschutz GC information](https://www.cuanschutz.edu/offices/office-of-information-technology/tools-services/google-cloud-platform)), or [Amazon Web Services](https://aws.amazon.com/).
+   - __Others:__ additional options include third-party "storage as a service" offerings like Google Drive or Dropbox and/or external servers maintained by other groups.
 
 ### How do I send or receive data on Alpine?
 
@@ -212,7 +212,7 @@ flowchart LR
             local_storage["📁 Local Storage\n(sometimes temporary)"]
         end
     end
-    
+
     external_storage --> | send data\nto Alpine | local_storage
     local_storage --> | receive data\nfrom Alpine | external_storage
 
@@ -306,19 +306,22 @@ Below you'll find the general steps associated with this process.
 1. Verify the contents were received as desired (this should show the contents of this repository):<br> `ls -l example-hpc-alpine-python`
 
 <!--- anchor for referencing github authentication guidance directly --->
+
 <a id="prepare-code-authenticate"></a>
 
 > ℹ️ __What if I need to authenticate with Github?__
 >
 > There are times where you may need to authenticate with Github in order to accomplish your work.
-From a Github perspective, you will want to use either Github Personal Access Tokens (PAT) (recommended by Github) or SSH keys associated with the `git` client on Alpine.
-Note: if you are prompted for a username and password from `git` when accessing a Github resource, the password is now associated with other keys like PAT's instead of your user's password ([reference](https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down)).
-See the following guide from Github for more information on how authentication through `git` to Github works:
+> From a Github perspective, you will want to use either Github Personal Access Tokens (PAT) (recommended by Github) or SSH keys associated with the `git` client on Alpine.
+> Note: if you are prompted for a username and password from `git` when accessing a Github resource, the password is now associated with other keys like PAT's instead of your user's password ([reference](https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down)).
+> See the following guide from Github for more information on how authentication through `git` to Github works:
 >
 > - __Github - Authenticating with GitHub from Git:__ [https://docs.github.com/en/get-started/quickstart/set-up-git#authenticating-with-github-from-git](https://docs.github.com/en/get-started/quickstart/set-up-git#authenticating-with-github-from-git)
 
 ### 2. ⚙️ Implement code on Alpine
 
 After our code is available on Alpine we're ready to run it using Slurm and related resources.
+The main goal of the Python code related to this work is to create a CSV file with random data at a specified location.
+We'll use [Slurm's `sbatch` command](https://slurm.schedmd.com/sbatch.html), which submits batch scripts to Slurm using various options.
 
 ### 2. 📂 Gather data results
