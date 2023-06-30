@@ -5,10 +5,13 @@
 # An example run script for use with:
 # https://github.com/CU-DBMI/example-hpc-alpine-python
 # 
-# Arguments:
-#   $1: a filepath destination for python to create a
-#       CSV file.
+# Expects the following sbatch exports:
+#   CSV_FILEPATH:
+#       a string which indicates the filepath for
+#       a CSV to be created by the python process.
 #
+# Example Alpine command line usage:
+#   $ sbatch --export=CSV_FILEPATH="/projects/$USER/somewhere" run_script.sh
 #
 # Referenced with modifications from:
 # https://curc.readthedocs.io/en/latest/clusters/alpine/examples.html
@@ -65,17 +68,6 @@
 #SBATCH --mail-type=ALL
 
 ########################################################
-# Initialization through acompile script:
-# ---------------------------------------
-# Below we use the acompile script to help 
-# gain access to the module package and
-# prepare to run our work on Slurm.
-########################################################
-
-# runs the acompile script with default configurations
-acompile
-
-########################################################
 # Module package commands:
 # ------------------------
 # Next, we use the module package to help load 
@@ -98,9 +90,6 @@ module load anaconda/2022.10
 # for running the Python code below.
 ########################################################
 
-# init conda
-conda init bash
-
 # first create the environment from the yaml file
 conda env create -f environment.yaml
 
@@ -117,4 +106,4 @@ conda activate example_env
 # run the python file example.py which takes an argument
 # as a filepath for exporting data which we pass in here
 # shell script file argument in the form of `$1`
-python code/example.py $1
+python code/example.py $CSV_FILEPATH
