@@ -2,18 +2,17 @@
 
 ```mermaid
 flowchart LR
-    subgraph repo["fa:fa-github This repo"]
+    subgraph repo["📦 This repo"]
         direction LR
-        run_script["fa:fa-file Run script"]
-        subgraph conda_env["&nbsp;fa:fa-globe Anaconda environment &nbsp;"]
-            python_code["fa:fa-file Python code"]
+        run_script["📄 Run script"]
+        subgraph conda_env["&nbsp;🌐 Anaconda environment &nbsp;"]
+            python_code["📄 Python code"]
         end
         
     end
-    subgraph alpine["fa:fa-server Alpine"]
+    subgraph alpine["🖥️ Alpine"]
         subgraph spacer1[" "]
-            subgraph spacer2["fa:fa-gears"]
-                
+            subgraph spacer2["⚙️⚙️⚙️"]
             end
         end
     end
@@ -45,16 +44,16 @@ This readme will cover a background on the technologies and how to use the conte
 
 ```mermaid
 flowchart LR
-    subgraph alpine["fa:fa-server Alpine"]
+    subgraph alpine["🖥️ Alpine"]
         direction TB
         subgraph resources[" &nbsp; 💪 Compute Resources &nbsp;"]
-            check_1["fa:fa-check"]
+            check_1["✅"]
         end
         subgraph time[" &nbsp; 🕑 Long-running Jobs &nbsp;"]
-            check_2["fa:fa-check"]
+            check_2["✅"]
         end
         subgraph collaborations[" &nbsp; 👥 Collaborations &nbsp;"]
-            check_3["fa:fa-check"]
+            check_3["✅"]
         end
     end
 
@@ -79,24 +78,23 @@ Reasons for using Alpine might include:
 
 ```mermaid
 flowchart LR
-    users["fa:fa-users Users"]
-    subgraph alpine["fa:fa-server Alpine"]
-        acompile["fa:fa-file acompile"]
-        slurm["fa:fa-calendar Slurm"]
-        subgraph login_nodes["fa:fa-sign-in Login node(s)"]
-            acompile["fa:fa-file acompile"]
-            slurm_cmd["fa:fa-terminal Slurm cmd's"]
+    users["👥 Users"]
+    subgraph alpine["🖥️ Alpine"]
+        slurm["🗓️ Slurm"]
+        subgraph login_nodes["🔑 Login node(s)"]
+            acompile["📄 acompile"]
+            slurm_cmd["⌨️ Slurm cmd's"]
         end
-        subgraph compute_nodes["fa:fa-cogs Compute node(s)"]
-            hardware["fa:fa-cog Compute\nResources"]
-            modules["fa:fa-cube Software via\nmodules pkg"]
+        subgraph compute_nodes["⚙️ Compute node(s)"]
+            hardware["⚙️ Compute\nResources"]
+            modules["💿 Software via\nmodules pkg"]
         end
         
-        subgraph storage["fa:fa-folder-open Storage"]
-            local_storage["fa:fa-folder Local Storage\n(sometimes temporary)"]
+        subgraph storage["📂 Storage"]
+            local_storage["📁 Local Storage\n(sometimes temporary)"]
         end
     end
-    remote_storage["fa:fa-folder External Storage\n(user specified / configured)"]
+    remote_storage["📁 External Storage\n(user specified / configured)"]
 
     users --> | preconfigured\nSlurm access| acompile --> slurm
     users --> | direct access | slurm_cmd --> slurm
@@ -131,13 +129,13 @@ Many common software packages are available through the [Modules package](https:
 
 ```mermaid
 flowchart LR
-    subgraph alpine["fa:fa-server Alpine"]
+    subgraph alpine["🖥️ Alpine"]
         direction LR
-        script["fa:fa-file Job script"]
-        subgraph slurm["fa:fa-calendar Slurm"]
-            queue["fa:fa-calendar-plus-o Queue"]
-            processing["fa:fa-gear Processing"]
-            completion["fa:fa-check Completion\n(or cancellation)"]
+        script["📄 Job script"]
+        subgraph slurm["🗓️ Slurm"]
+            queue["🕑 Queue"]
+            processing["⚙️ Processing"]
+            completion["✅ Completion\n(or cancellation)"]
         end
     end
 
@@ -166,15 +164,15 @@ Please note that some steps and additional complexity are obscured for the purpo
 
 ```mermaid
 flowchart LR
-    users["fa:fa-users Users"]
-    subgraph alpine["fa:fa-server Alpine"]
-        slurm["fa:fa-calendar Slurm"]
+    users["👥 Users"]
+    subgraph alpine["🖥️ Alpine"]
+        slurm["🗓️ Slurm"]
         process_jobs["Processed jobs"]
-        subgraph storage["fa:fa-folder-open Storage"]
-            local_storage["fa:fa-folder Local Storage\n(sometimes temporary)"]
+        subgraph storage["📂 Storage"]
+            local_storage["📁 Local Storage\n(sometimes temporary)"]
         end
     end
-    remote_storage["fa:fa-folder External Storage\n(user specified / configured)"]
+    remote_storage["📁 External Storage\n(user specified / configured)"]
 
     users --> | run their\nwork with | slurm
     slurm --> | runs code| process_jobs
@@ -208,10 +206,10 @@ Examples may include the following:
 
 ```mermaid
 flowchart LR
-    external_storage["fa:fa-folder External Storage\n(user specified / configured)"]
-    subgraph alpine["fa:fa-server Alpine"]
-        subgraph storage["fa:fa-folder-open Storage"]
-            local_storage["fa:fa-folder Local Storage\n(sometimes temporary)"]
+    external_storage["📁 External Storage\n(user specified / configured)"]
+    subgraph alpine["🖥️ Alpine"]
+        subgraph storage["📂 Storage"]
+            local_storage["📁 Local Storage\n(sometimes temporary)"]
         end
     end
     
@@ -233,24 +231,24 @@ Please reference the following documentation from the University of Colorado Bou
 
 ```mermaid
 flowchart LR
-    users["(0. Gain access)\nfa:fa-users CU Anschutz\nUsers"]
-    subgraph alpine["fa:fa-server Alpine"]
+    users["(0. Gain access)\n👥 CU Anschutz\nUsers"]
+    subgraph alpine["🖥️ Alpine"]
         direction LR
-        alpine_terminal1["(1. Prepare code)\nfa:fa-git git clone"]
-        alpine_terminal2["(2. Implement code)\nfa:fa-terminal Process run script"]
-        subgraph repo["fa:fa-github This repo"]
+        alpine_terminal1["(1. Prepare code)\n⌨️ git clone"]
+        alpine_terminal2["(2. Implement code)\n⌨️ Process run script"]
+        subgraph repo["📦 This repo"]
             direction TB
-            run_script["fa:fa-file Run script"]
-            subgraph conda_env["&nbsp;fa:fa-globe Anaconda environment &nbsp;"]
-                python_code["fa:fa-file Python code"]
+            run_script["📄 Run script"]
+            subgraph conda_env["&nbsp;🌐 Anaconda environment &nbsp;"]
+                python_code["📄 Python code"]
             end
         end
-        subgraph slurm_job["fa:fa-calendar Slurm processing"]
+        subgraph slurm_job["🗓️ Slurm processing"]
             direction LR
-            processing["fa:fa-gear Processing"]
+            processing["⚙️ Processing"]
         end
-        subgraph storage["fa:fa-folder-open Storage"]
-            local_storage["(3. Gather data)\nfa:fa-folder Local Storage\n(sometimes temporary)"]
+        subgraph storage["📂 Storage"]
+            local_storage["(3. Gather data)\n📁 Local Storage\n(sometimes temporary)"]
         end
     end
 
