@@ -149,7 +149,7 @@ style alpine fill:#ffffff,stroke:#444444;
 style slurm fill:#F0F9FF,stroke:#075985;
 ```
 
-_Diagram showing how Slurm is used at an abstract level._
+_Diagram showing how Slurm generally works._
 
 Using Alpine effectively involves knowing how to leverage Slurm.
 A simplified way to understand how Slurm works is through the following sequence.
@@ -295,7 +295,9 @@ Below you'll find the general steps associated with this process.
 1. Use `git` (built into Alpine by default) commands to clone this repo:<br> `git clone https://github.com/CU-DBMI/example-hpc-alpine-python`
 1. Verify the contents were received as desired (this should show the contents of this repository):<br> `ls -l example-hpc-alpine-python`
 
+<!--- anchor for referencing github authentication guidance directly --->
 <a id="prepare-code-authenticate"></a>
+
 > ℹ️ __What if I need to authenticate with Github?__
 There are times where you may need to authenticate with Github in order to accomplish your work.
 From a Github perspective, you will want to use either Github Personal Access Tokens (PAT) (recommended by Github) or SSH keys associated with the `git` client on Alpine.
@@ -305,5 +307,7 @@ See the following guide from Github for more information on how authentication t
 > - __Github - Authenticating with GitHub from Git:__ [https://docs.github.com/en/get-started/quickstart/set-up-git#authenticating-with-github-from-git](https://docs.github.com/en/get-started/quickstart/set-up-git#authenticating-with-github-from-git)
 
 ### 2. ⚙️ Implement code on Alpine
+
+After our code is available on Alpine we're ready to run it using Slurm and related resources.
 
 ### 2. 📂 Gather data results
