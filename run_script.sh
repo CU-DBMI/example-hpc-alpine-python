@@ -90,7 +90,11 @@ module load anaconda/2022.10
 # for running the Python code below.
 ########################################################
 
-# first create the environment from the yaml file
+# remove any existing environments that happen to have
+# the same exact name.
+conda env remove --name example_env
+
+# next create the environment from the yaml file
 conda env create -f environment.yml
 
 # then activate the environment
