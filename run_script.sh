@@ -4,6 +4,11 @@
 # File description:
 # An example run script for use with:
 # https://github.com/CU-DBMI/example-hpc-alpine-python
+# 
+# Arguments:
+#   $1: a filepath destination for python to create a
+#       CSV file.
+#
 #
 # Referenced with modifications from:
 # https://curc.readthedocs.io/en/latest/clusters/alpine/examples.html#full-example-job-script
@@ -68,9 +73,12 @@
 
 # unloads all existing modules which may have been previously loaded
 module purge
+
 # use module package to load anaconda software so it may
-# be used by your processes
-module load anaconda
+# be used by your processes.
+# note: the numbers found after anaconda/####.## are subject
+# to change depending on the versions installed by administrators.
+module load anaconda/2022.10
 
 ########################################################
 # Anaconda environment manangement:
@@ -78,6 +86,11 @@ module load anaconda
 # Here we load the Anaconda environment to be used
 # for running the Python code below.
 ########################################################
+
+# first create the environment from the yaml file
+conda env create -f environment.yaml
+
+# then activate the environment
 conda activate example_env
 
 ########################################################
@@ -86,4 +99,8 @@ conda activate example_env
 # After loading the environment we run the Python
 # code to perform the work we'd like to accomplish.
 ########################################################
-python code/example.py
+
+# run the python file example.py which takes an argument
+# as a filepath for exporting data which we pass in here
+# shell script file argument in the form of `$1`
+python code/example.py $1

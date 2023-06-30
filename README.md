@@ -283,6 +283,17 @@ Please see the following guide from the University of Colorado Boulder's Researc
 
 ### 1. 🛠️ Prepare code on Alpine
 
+```shell
+[username@xsede.org@login-ciX ~]$ cd /projects/$USER
+[username@xsede.org@login-ciX username@xsede.org]$ git clone https://github.com/CU-DBMI/example-hpc-alpine-python
+Cloning into 'example-hpc-alpine-python'...
+... git output ...
+[username@xsede.org@login-ciX username@xsede.org]$ ls -l example-hpc-alpine-python
+... ls output ...
+```
+
+_An example of what this section might look like in your Alpine terminal session._
+
 Next we need to prepare our code within Alpine.
 We do this to balance the fact that we may develop and source control code outside of Alpine and needing to periodically synchronize it with updates.
 In the case of this example work, we assume git as an interface for Github as the source control host.
