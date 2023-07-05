@@ -391,5 +391,6 @@ __Please note:__ always be sure to check data privacy and policy which change th
 
 - [University of Colorado Boulder's Research Computing](https://www.colorado.edu/rc/)
 - [HPC Cluster Alpine Documentation](https://curc.readthedocs.io/en/latest/clusters/alpine/index.html)
+- [Github: Getting started with Git](https://docs.github.com/en/get-started/getting-started-with-git)
 - [Slurm Documentation](https://slurm.schedmd.com/)
 - [Globus Documentation](https://docs.globus.org/)
