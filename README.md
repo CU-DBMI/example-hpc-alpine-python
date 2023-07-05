@@ -19,7 +19,6 @@ flowchart LR
 
     repo --> | process on | alpine
 
-
 style conda_env fill:#FEF3C7,stroke:#D97706;
 style repo fill:#ffffff,stroke:#444444;
 style alpine fill:#ffffff,stroke:#444444;
@@ -225,7 +224,7 @@ Data may be sent to or gathered from Alpine using a number of different methods.
 These may vary contingent on the external data storage being referenced, the code involved, or your group's available resources.
 Please reference the following documentation from the University of Colorado Boulder's Research Computing regarding data transfers: [The Compute Environment - Data Transfer](https://curc.readthedocs.io/en/latest/compute/data-transfer.html).
 __Please note:__ due to the authentication configuration of Alpine many local or SSH-key based methods are not available for CU Anschutz users.
-As a result, [Globus](https://www.globus.org/) represents one of the best options available (see [3. 📂 Transfer data results](#3-📂-transfer-data-results) below).
+As a result, [Globus](https://www.globus.org/) represents one of the best options available (see [3. 📂 Transfer data results](#3-%F0%9F%93%82-transfer-data-results) below).
 
 ## Implementation
 
@@ -369,23 +368,23 @@ In this example we'll use [Globus](https://www.globus.org/) as a data transfer m
 __Please note:__ always be sure to check data privacy and policy which change the methods or storage locations you may use for your data!
 
 1. __Globus local machine configuration__
-    1. Install [Globus Connect Personal](https://www.globus.org/globus-connect-personal) on your local machine.
-    1. During installation, you will be prompted to login to Globus. Use your ACCESS credentials to login.
-    1. During installation login, note the label you provide to Globus. This will be used later, referenced as "Globus Connect Personal label".
-    1. Ensure you add and (__importantly:__) provide write access to a local directory via __Globus Connect Personal - Preferences - Access__ where you'd like the data to be received from Alpine to your local machine.<br><br>
+   1. Install [Globus Connect Personal](https://www.globus.org/globus-connect-personal) on your local machine.
+   1. During installation, you will be prompted to login to Globus. Use your ACCESS credentials to login.
+   1. During installation login, note the label you provide to Globus. This will be used later, referenced as "Globus Connect Personal label".
+   1. Ensure you add and (__importantly:__) provide write access to a local directory via __Globus Connect Personal - Preferences - Access__ where you'd like the data to be received from Alpine to your local machine.<br><br>
 1. __Globus web interface__
-    1. Use your ACCESS credentials to login to the [Globus web interface](https://app.globus.org/login).
-    1. __Configure File Manager <ins>left</ins> side (source selection)__
-        1. Within the Globus web interface on the File Manager tab, use the __Collection__ input box to search or select __"CU Boulder Research Computing ACCESS"__.
-        1. Within the Globus web interface on the File Manager tab, use the __Path__ input box to enter: `/projects/your_username_here/` (replacing "your_username_here" with your username from Alpine, including the "@" symbol if it applies).
-    1. __Configure File Manager <ins>right</ins> side (destination selection)__
-        1. Within the Globus web interface on the File Manager tab, use the __Collection__ input box to search or select the __Globus Connect Personal label you provided in earlier steps.
-        1. Within the Globus web interface on the File Manager tab, use the __Path__ input box to enter the local path which you made accessible in earlier steps.
-    1. __Begin Globus transfer__
-        1. Within the Globus web interface on the File Manager tab on the left side (source selection), check the box next to the file `example_data.csv`.
-        1. Within the Globus web interface on the File Manager tab on the left side (source selection), click the "Start ▶️" button to begin the transfer from Alpine to your local directory.
-        1. After clicking the "Start ▶️" button, you may see a message in the top right with the message "Transfer request submitted successfully". You can click the link to view the details associated with the transfer.
-        1. After a short period, the file will be transferred and you should be able to verify the contents on your local machine.
+   1. Use your ACCESS credentials to login to the [Globus web interface](https://app.globus.org/login).
+   1. __Configure File Manager <ins>left</ins> side (source selection)__
+      1. Within the Globus web interface on the File Manager tab, use the __Collection__ input box to search or select __"CU Boulder Research Computing ACCESS"__.
+      1. Within the Globus web interface on the File Manager tab, use the __Path__ input box to enter: `/projects/your_username_here/` (replacing "your_username_here" with your username from Alpine, including the "@" symbol if it applies).
+   1. __Configure File Manager <ins>right</ins> side (destination selection)__
+      1. Within the Globus web interface on the File Manager tab, use the __Collection__ input box to search or select the \_\_Globus Connect Personal label you provided in earlier steps.
+      1. Within the Globus web interface on the File Manager tab, use the __Path__ input box to enter the local path which you made accessible in earlier steps.
+   1. __Begin Globus transfer__
+      1. Within the Globus web interface on the File Manager tab on the left side (source selection), check the box next to the file `example_data.csv`.
+      1. Within the Globus web interface on the File Manager tab on the left side (source selection), click the "Start ▶️" button to begin the transfer from Alpine to your local directory.
+      1. After clicking the "Start ▶️" button, you may see a message in the top right with the message "Transfer request submitted successfully". You can click the link to view the details associated with the transfer.
+      1. After a short period, the file will be transferred and you should be able to verify the contents on your local machine.
 
 ## Further References
 
