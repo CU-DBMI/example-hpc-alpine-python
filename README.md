@@ -223,9 +223,9 @@ _Diagram showing external data storage being used to send or receive data on Alp
 
 Data may be sent to or gathered from Alpine using a number of different methods.
 These may vary contingent on the external data storage being referenced, the code involved, or your group's available resources.
-Please reference the following documentation from the University of Colorado Boulder's Research Computing regarding data transfers.
-
-- __The Compute Environment - Data Transfer:__ [https://curc.readthedocs.io/en/latest/compute/data-transfer.html](https://curc.readthedocs.io/en/latest/compute/data-transfer.html)
+Please reference the following documentation from the University of Colorado Boulder's Research Computing regarding data transfers: [The Compute Environment - Data Transfer](https://curc.readthedocs.io/en/latest/compute/data-transfer.html).
+__Please note:__ due to the authentication configuration of Alpine many local or SSH-key based methods are not available for CU Anschutz users.
+As a result, [Globus](https://www.globus.org/) represents one of the best options available (see [3. 📂 Transfer data results](#3-📂-transfer-data-results) below).
 
 ## Implementation
 
@@ -270,8 +270,7 @@ style local_storage fill:#D1FAE5,stroke:#444444;
 
 _Diagram showing how this repository may be used within Alpine through primary steps and processing workflow._
 
-This section will cover how Alpine may be used with this repository to run example Python code.
-Generally, we'll cover this in two primary steps: [0. Gain Alpine access](#0-gain-alpine-access), [1. preparation](#1-preparation) and [2. implementation](#2-implementation).
+Use the following steps to understand how Alpine may be used with this repository to run example Python code.
 
 ### 0. 🔑 Gain Alpine access
 
@@ -292,7 +291,7 @@ Cloning into 'example-hpc-alpine-python'...
 ... ls output ...
 ```
 
-_An example of what this section might look like in your Alpine terminal session._
+_An example of what this preparation section might look like in your Alpine terminal session._
 
 Next we need to prepare our code within Alpine.
 We do this to balance the fact that we may develop and source control code outside of Alpine and needing to periodically synchronize it with updates.
@@ -320,13 +319,77 @@ Below you'll find the general steps associated with this process.
 
 ### 2. ⚙️ Implement code on Alpine
 
+```shell
+[username@xsede.org@login-ciX ~]$ sbatch --export=CSV_FILEPATH="/projects/$USER/example_data.csv" example-hpc-alpine-python/run_script.sh
+[username@xsede.org@login-ciX username@xsede.org]$ tail -f example-hpc-alpine-python.out
+... tail output (ctrl/cmd + c to cancel) ...
+[username@xsede.org@login-ciX username@xsede.org]$ head -n 2 example_data.csvexample-hpc-alpine-python
+... data output ...
+```
+
+_An example of what this implementation section might look like in your Alpine terminal session._
+
 After our code is available on Alpine we're ready to run it using Slurm and related resources.
 We use Anaconda to build a Python environment with specified packages for reproducibility.
 The main goal of the Python code related to this work is to create a CSV file with random data at a specified location.
 We'll use [Slurm's `sbatch` command](https://slurm.schedmd.com/sbatch.html), which submits batch scripts to Slurm using various options.
 
-1. Use the `sbatch` command with exported variable `CSV_FILEPATH`.<br> `sbatch --export=CSV_FILEPATH="/projects/$USER/example_data.csv" run_script.sh`
+1. Use the `sbatch` command with exported variable `CSV_FILEPATH`.<br> `sbatch --export=CSV_FILEPATH="/projects/$USER/example_data.csv" example-hpc-alpine-python/run_script.sh`
 1. After a short moment, use the [`tail`](<https://en.wikipedia.org/wiki/Tail_(Unix)>) command to observe the log file created by Slurm for this sbatch submission. This file can help you understand where things are at and if anything went wrong.<br> `tail -f example-hpc-alpine-python.out`
 1. Once you see that the work has completed from the log file, take a look at the top 2 lines of the data file using the [`head`](<https://en.wikipedia.org/wiki/Head_(Unix)>) command to verify the data arrived as expected (column names with random values):<br> `head -n 2 example_data.csv`
 
 ### 3. 📂 Transfer data results
+
+```mermaid
+flowchart LR
+    subgraph alpine["🖥️ Alpine"]
+        local_storage["📄 /projects/$USER/example_data.csv"]
+    end
+    subgraph globus["☁️ Globus"]
+        globus_web["🔁 Globus web interface"]
+    end
+    subgraph local_machine["🖥️ Local device"]
+        personal_connect["🔁 Globus Connect Personal"]
+        local_dir["📄 /a_local_dir/example_data.csv"]
+    end
+
+    local_storage --> | moves data\nfrom Alpine | globus_web
+    globus_web --> | interface \n from Globus | personal_connect
+    personal_connect --> | downloads \n local file | local_dir
+
+style alpine fill:#ffffff,stroke:#444444;
+style globus fill:#ffffff,stroke:#444444;
+style local_machine fill:#ffffff,stroke:#444444;
+```
+
+_Diagram showing how example_data.csv may be transferred from Alpine to a local machine using Globus solutions._
+
+Now that the example data output from the Slurm work is available we need to transfer that data to a local system for further use.
+In this example we'll use [Globus](https://www.globus.org/) as a data transfer method from Alpine to our local machine.
+__Please note:__ always be sure to check data privacy and policy which change the methods or storage locations you may use for your data!
+
+1. __Globus local machine configuration__
+    1. Install [Globus Connect Personal](https://www.globus.org/globus-connect-personal) on your local machine.
+    1. During installation, you will be prompted to login to Globus. Use your ACCESS credentials to login.
+    1. During installation login, note the label you provide to Globus. This will be used later, referenced as "Globus Connect Personal label".
+    1. Ensure you add and (__importantly:__) provide write access to a local directory via __Globus Connect Personal - Preferences - Access__ where you'd like the data to be received from Alpine to your local machine.<br><br>
+1. __Globus web interface__
+    1. Use your ACCESS credentials to login to the [Globus web interface](https://app.globus.org/login).
+    1. __Configure File Manager <ins>left</ins> side (source selection)__
+        1. Within the Globus web interface on the File Manager tab, use the __Collection__ input box to search or select __"CU Boulder Research Computing ACCESS"__.
+        1. Within the Globus web interface on the File Manager tab, use the __Path__ input box to enter: `/projects/your_username_here/` (replacing "your_username_here" with your username from Alpine, including the "@" symbol if it applies).
+    1. __Configure File Manager <ins>right</ins> side (destination selection)__
+        1. Within the Globus web interface on the File Manager tab, use the __Collection__ input box to search or select the __Globus Connect Personal label you provided in earlier steps.
+        1. Within the Globus web interface on the File Manager tab, use the __Path__ input box to enter the local path which you made accessible in earlier steps.
+    1. __Begin Globus transfer__
+        1. Within the Globus web interface on the File Manager tab on the left side (source selection), check the box next to the file `example_data.csv`.
+        1. Within the Globus web interface on the File Manager tab on the left side (source selection), click the "Start ▶️" button to begin the transfer from Alpine to your local directory.
+        1. After clicking the "Start ▶️" button, you may see a message in the top right with the message "Transfer request submitted successfully". You can click the link to view the details associated with the transfer.
+        1. After a short period, the file will be transferred and you should be able to verify the contents on your local machine.
+
+## Further References
+
+- [University of Colorado Boulder's Research Computing](https://www.colorado.edu/rc/)
+- [HPC Cluster Alpine Documentation](https://curc.readthedocs.io/en/latest/clusters/alpine/index.html)
+- [Slurm Documentation](https://slurm.schedmd.com/)
+- [Globus Documentation](https://docs.globus.org/)
