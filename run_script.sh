@@ -19,8 +19,10 @@
 ########################################################
 # Slurm directives:
 # -------------------
-# Below are configurations for Slurm, letting it know
-# what and how you'd like to use resources on Alpine.
+# Below are configurations for Slurm that specify 
+# which resources you'd like to use and how you'd like
+# to use them on Alpine.
+#
 # Generally documentation on these may be found here:
 # https://slurm.schedmd.com/sbatch.html
 ########################################################
