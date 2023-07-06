@@ -197,7 +197,7 @@ These may be distinguished in two ways:
 1. __External / remote storage:__ Users are encouraged to explore external data storage options for long-term hosting.<br>
    Examples may include the following:
 
-   - __[Petalibrary](https://www.colorado.edu/rc/resources/petalibrary)__: subsidized external storage host from University of Colorado Boulder's Research Computing (requires specific arrangements outside of Alpine).
+   - __[PetaLibrary](https://www.colorado.edu/rc/resources/petalibrary)__: subsidized external storage host from University of Colorado Boulder's Research Computing (requires specific arrangements outside of Alpine).
    - __Cloud hosting:__ [object storage](https://en.wikipedia.org/wiki/Object_storage) and related data hosting options from cloud providers like [Microsoft Azure](https://azure.microsoft.com/en-us), [Google Cloud](https://cloud.google.com/) ([internal CU Anschutz GC information](https://www.cuanschutz.edu/offices/office-of-information-technology/tools-services/google-cloud-platform)), or [Amazon Web Services](https://aws.amazon.com/).
    - __Others:__ additional options include third-party "storage as a service" offerings like Google Drive or Dropbox and/or external servers maintained by other groups.
 
@@ -294,7 +294,7 @@ _An example of what this preparation section might look like in your Alpine term
 
 Next we need to prepare our code within Alpine.
 We do this to balance the fact that we may develop and source control code outside of Alpine and needing to periodically synchronize it with updates.
-In the case of this example work, we assume git as an interface for Github as the source control host.
+In the case of this example work, we assume git as an interface for GitHub as the source control host.
 
 Below you'll find the general steps associated with this process.
 
@@ -307,14 +307,14 @@ Below you'll find the general steps associated with this process.
 
 <a id="prepare-code-authenticate"></a>
 
-> ℹ️ __What if I need to authenticate with Github?__
+> ℹ️ __What if I need to authenticate with GitHub?__
 >
-> There are times where you may need to authenticate with Github in order to accomplish your work.
-> From a Github perspective, you will want to use either Github Personal Access Tokens (PAT) (recommended by Github) or SSH keys associated with the `git` client on Alpine.
-> Note: if you are prompted for a username and password from `git` when accessing a Github resource, the password is now associated with other keys like PAT's instead of your user's password ([reference](https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down)).
-> See the following guide from Github for more information on how authentication through `git` to Github works:
+> There are times where you may need to authenticate with GitHub in order to accomplish your work.
+> From a GitHub perspective, you will want to use either GitHub Personal Access Tokens (PAT) (recommended by GitHub) or SSH keys associated with the `git` client on Alpine.
+> Note: if you are prompted for a username and password from `git` when accessing a GitHub resource, the password is now associated with other keys like PAT's instead of your user's password ([reference](https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down)).
+> See the following guide from GitHub for more information on how authentication through `git` to GitHub works:
 >
-> - __Github - Authenticating with GitHub from Git:__ [https://docs.github.com/en/get-started/quickstart/set-up-git#authenticating-with-github-from-git](https://docs.github.com/en/get-started/quickstart/set-up-git#authenticating-with-github-from-git)
+> - __GitHub - Authenticating with GitHub from Git:__ [https://docs.github.com/en/get-started/quickstart/set-up-git#authenticating-with-github-from-git](https://docs.github.com/en/get-started/quickstart/set-up-git#authenticating-with-github-from-git)
 
 ### 2. ⚙️ Implement code on Alpine
 
@@ -390,6 +390,6 @@ __Please note:__ always be sure to check data privacy and policy which change th
 
 - [University of Colorado Boulder's Research Computing](https://www.colorado.edu/rc/)
 - [HPC Cluster Alpine Documentation](https://curc.readthedocs.io/en/latest/clusters/alpine/index.html)
-- [Github: Getting started with Git](https://docs.github.com/en/get-started/getting-started-with-git)
+- [GitHub: Getting started with Git](https://docs.github.com/en/get-started/getting-started-with-git)
 - [Slurm Documentation](https://slurm.schedmd.com/)
 - [Globus Documentation](https://docs.globus.org/)
