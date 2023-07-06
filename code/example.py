@@ -1,6 +1,6 @@
 """
-An example Python file which creates random data and exports it to a location specified
-by way of a
+An example Python file which creates random data and exports 
+it to a location specified in a command line argument.
 """
 import argparse
 import logging
