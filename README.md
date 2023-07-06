@@ -71,7 +71,7 @@ Reasons for using Alpine might include:
 
 - __Compute resources:__ Leveraging otherwise cost-prohibitive amounts of memory, CPU, GPU, etc. for processing data.
 - __Long-running jobs:__ Completing long-running processes which may take hours or days to complete.
-- __Collaborations:__ Sharing a single implementation environment for reproducibility within a group (avoiding "works on my machine").
+- __Collaborations:__ Sharing a single implementation environment for reproducibility within a group (avoiding "works on my machine" inconsistency issues).
 
 ### How does Alpine work?
 
