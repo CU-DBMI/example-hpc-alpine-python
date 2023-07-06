@@ -108,11 +108,12 @@ conda activate example_env
 # code to perform the work we'd like to accomplish.
 ########################################################
 
-# run the python file example.py which takes an argument
-# as a filepath for exporting data which we pass in here
-# from an sbatch exported variable name which is
-# received as a named argparse variable within Python
-# using the same name.
+# run the python file example.py which takes an
+# argparse argument for use within python processing.
+#
+# note: $CSV_FILEPATH is received as an
+# sbatch exported variable and sent to python using 
+# the same name.
 python code/example.py --CSV_FILENAME=$CSV_FILEPATH
 
 ########################################################
