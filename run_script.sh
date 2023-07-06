@@ -64,8 +64,8 @@
 # Sets an email address to receive notifications from Alpine
 #SBATCH --mail-user=your-email-address-here@cuanschutz.edu
 
-# Indicate which notifications you'd like to receive from Alpine
-# this can also be set to START, END, or FAIL.
+# Indicate which notifications you'd like to receive from Alpine.
+# This can also be set to START, END, or FAIL.
 #SBATCH --mail-type=ALL
 
 ########################################################
@@ -75,12 +75,12 @@
 # software which is pre-loaded on Alpine.
 ########################################################
 
-# unloads all existing modules which may have been previously loaded
+# Unloads all existing modules which may have been previously loaded.
 module purge
 
-# use module package to load anaconda software so it may
+# Use module package to load Anaconda software so it may
 # be used by your processes.
-# note: the numbers found after anaconda/####.## are subject
+# Note: the numbers found after anaconda/####.## are subject
 # to change depending on the versions installed by administrators.
 module load anaconda/2022.10
 
@@ -91,14 +91,14 @@ module load anaconda/2022.10
 # for running the Python code below.
 ########################################################
 
-# remove any existing environments that happen to have
+# Remove any existing environments that happen to have
 # the same exact name.
 conda env remove --name example_env -y
 
-# next create the environment from the yaml file
+# Next create the environment from the yaml file.
 conda env create -f environment.yml
 
-# then activate the environment
+# Then activate the environment.
 conda activate example_env
 
 ########################################################
@@ -108,11 +108,11 @@ conda activate example_env
 # code to perform the work we'd like to accomplish.
 ########################################################
 
-# run the python file example.py which takes an
-# argparse argument for use within python processing.
+# Run the Python file example.py which takes an
+# argparse argument for use within Python processing.
 #
-# note: $CSV_FILEPATH is received as an
-# sbatch exported variable and sent to python using 
+# Note: $CSV_FILEPATH is received as an
+# sbatch exported variable and sent to Python using 
 # the same name.
 python code/example.py --CSV_FILENAME=$CSV_FILEPATH
 
