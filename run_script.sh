@@ -37,7 +37,7 @@
 #SBATCH --job-name=example-hpc-alpine-python
 
 # Tells Slurm to gather standard output from running this
-# file and send to a specific file.
+# file and write it to a specific file.
 # Special variable symbols may be used here:
 # %j - job ID
 # %a - job array index
