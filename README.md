@@ -292,8 +292,8 @@ Cloning into 'example-hpc-alpine-python'...
 
 _An example of what this preparation section might look like in your Alpine terminal session._
 
-Next we need to prepare our code within Alpine.
-We do this to balance the fact that we may develop and source control code outside of Alpine and needing to periodically synchronize it with updates.
+Next we will prepare our code within Alpine.
+We do this to balance the fact that we may develop and source control code outside of Alpine.
 In the case of this example work, we assume git as an interface for GitHub as the source control host.
 
 Below you'll find the general steps associated with this process.
