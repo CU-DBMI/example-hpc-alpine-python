@@ -109,17 +109,21 @@ style slurm fill:#F0F9FF,stroke:#075985;
 _Diagram showing high-level user workflow and Alpine components._
 
 Alpine's compute resources are used through compute nodes in a system called [Slurm](https://github.com/SchedMD/slurm).
-Slurm helps coordinate shared and configurable access to the compute resources.
+Slurm is a system that a large number of users to run jobs on a cluster of computers; the system figures out how to use all the computers in the cluster to execute all the user's jobs fairly (i.e., giving each user approximately equal time and resources on the cluster). A *job* is a request to run something, e.g. a bash script or a program, along with specifications about how much RAM and CPU it needs, how long it can run, and how it should be executed.
+
+Slurm's role in general is to take in a job (submitted via the `sbatch` command) and put it into a *queue* (also called a "partition" in Slurm). For each job in the queue, Slurm constantly tries to find a computer in the cluster with enough resources to run that job, then when an available computer is found runs the program the job specifies on that computer. As the program runs, Slurm records its output to files and finally reports the program's exit status (either completed or failed) back to the job manager.
+
+Importantly, jobs can either be marked as *interactive* or *batch*. When you submit an interactive job, `sbatch` will pause while waiting for the job to start and then connect you to the program, so you can see its output and enter commands in real time. On the other hand, a *batch* job will return immediately; you can see the progress of your job using `squeue`, and you can typically see the output of the job in the folder from which you ran `sbatch` unless you specify otherwise.
 Data for or from Slurm work may be stored temporarily on local storage or on user-specific external (remote) storage.
 
 > ℹ️ __Wait, what are "nodes"?__
 >
 > A simplified way to understand the architecture of Slurm on Alpine is through login and compute "nodes" (computers).
-> Login nodes act as a way to prepare and submit processes which will be completed on compute nodes.
+> Login nodes act as a place to prepare and submit jobs which will be completed on compute nodes. Login nodes are never used to execute Slurm jobs, whereas compute nodes are exclusively accessed via a job.
 > Login nodes have limited resource access and are not recommended for running procedures.
 
 One can interact with Slurm on Alpine by use of [Slurm interfaces and directives](https://curc.readthedocs.io/en/latest/clusters/alpine/examples.html).
-A quick way of accessing Alpine resources is through the use of the `acompile` command, which references a script with common Slurm configurations.
+A quick way of accessing Alpine resources is through the use of the `acompile` command, which starts an interactive job on a compute node with some typical default parameters for the job. Since `acompile` requests very modest resources (1 hour and 1 CPU core at the time of writing), you'll typically quickly be connected to a compute node. For more intensive or long-lived interactive jobs, consider using `sinteractive`, which allows for more customization [Interactive Jobs](https://curc.readthedocs.io/en/latest/running-jobs/interactive-jobs.html).
 One can also access Slurm directly through [various commands](https://slurm.schedmd.com/quickstart.html#commands) on Alpine.
 
 Many common software packages are available through the [Modules package](https://github.com/cea-hpc/modules) on Alpine ([UCB RC documentation: The Modules System](https://curc.readthedocs.io/en/latest/compute/modules.html)).
@@ -151,7 +155,7 @@ _Diagram showing how Slurm generally works._
 
 Using Alpine effectively involves knowing how to leverage Slurm.
 A simplified way to understand how Slurm works is through the following sequence.
-Please note that some steps and additional complexity are obscured for the purposes of providing a basis of understanding.
+Please note that some steps and additional complexity are omitted for the purposes of providing a basis of understanding.
 
 1. __Create a job script:__ build a script which will configure and run procedures related to the work you seek to accomplish on the HPC cluster.
 1. __Submit job to Slurm:__ ask Slurm to run a set of commands or procedures.
@@ -224,7 +228,7 @@ Data may be sent to or gathered from Alpine using a number of different methods.
 These may vary contingent on the external data storage being referenced, the code involved, or your group's available resources.
 Please reference the following documentation from the University of Colorado Boulder's Research Computing regarding data transfers: [The Compute Environment - Data Transfer](https://curc.readthedocs.io/en/latest/compute/data-transfer.html).
 __Please note:__ due to the authentication configuration of Alpine many local or SSH-key based methods are not available for CU Anschutz users.
-As a result, [Globus](https://www.globus.org/) represents one of the best options available (see [3. 📂 Transfer data results](#3-%F0%9F%93%82-transfer-data-results) below).
+As a result, [Globus](https://www.globus.org/) represents one of the best options available (see [3. 📂 Transfer data results](#3-%F0%9F%93%82-transfer-data-results) below). While the Globus tutorial in this document describes how you can download data from Alpine to your computer, note that you can also use Globus to transfer data to Alpine from your computer.
 
 ## Implementation
 
