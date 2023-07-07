@@ -1,5 +1,5 @@
 """
-An example Python file which creates random data and exports 
+An example Python file which creates random data and exports
 it to a location specified in a command line argument.
 """
 import argparse

@@ -19,7 +19,7 @@
 ########################################################
 # Slurm directives:
 # -------------------
-# Below are configurations for Slurm that specify 
+# Below are configurations for Slurm that specify
 # which resources you'd like to use and how you'd like
 # to use them on Alpine.
 #
@@ -112,7 +112,7 @@ conda activate example_env
 # argparse argument for use within Python processing.
 #
 # Note: $CSV_FILEPATH is received as an
-# sbatch exported variable and sent to Python using 
+# sbatch exported variable and sent to Python using
 # the same name.
 python code/example.py --CSV_FILENAME=$CSV_FILEPATH
 
