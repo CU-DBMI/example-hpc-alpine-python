@@ -32,6 +32,8 @@ This repository is intended to help demonstrate the use of Python on [Alpine](ht
 We use Python here by way of [Anaconda](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) environment management to run code on Alpine.
 This readme will cover a background on the technologies and how to use the contents of this repository as though it were a project you were working on and wanting to run on Alpine.
 
+Content here was developed by the [Software Engineering Team (SET)](https://cu-dbmi.github.io/set-website/) in the [Department of Biomedical Informatics (DBMI)](https://medschool.cuanschutz.edu/dbmi) with the [University of Colorado Anschutz School of Medicine](https://medschool.cuanschutz.edu/).
+
 ## Table of Contents
 
 1. [__Backround:__](#background) here we cover the background of Alpine and related technologies.
@@ -109,11 +111,11 @@ style slurm fill:#F0F9FF,stroke:#075985;
 _Diagram showing high-level user workflow and Alpine components._
 
 Alpine's compute resources are used through compute nodes in a system called [Slurm](https://github.com/SchedMD/slurm).
-Slurm is a system that a large number of users to run jobs on a cluster of computers; the system figures out how to use all the computers in the cluster to execute all the user's jobs fairly (i.e., giving each user approximately equal time and resources on the cluster). A *job* is a request to run something, e.g. a bash script or a program, along with specifications about how much RAM and CPU it needs, how long it can run, and how it should be executed.
+Slurm is a system that a large number of users to run jobs on a cluster of computers; the system figures out how to use all the computers in the cluster to execute all the user's jobs fairly (i.e., giving each user approximately equal time and resources on the cluster). A _job_ is a request to run something, e.g. a bash script or a program, along with specifications about how much RAM and CPU it needs, how long it can run, and how it should be executed.
 
-Slurm's role in general is to take in a job (submitted via the `sbatch` command) and put it into a *queue* (also called a "partition" in Slurm). For each job in the queue, Slurm constantly tries to find a computer in the cluster with enough resources to run that job, then when an available computer is found runs the program the job specifies on that computer. As the program runs, Slurm records its output to files and finally reports the program's exit status (either completed or failed) back to the job manager.
+Slurm's role in general is to take in a job (submitted via the `sbatch` command) and put it into a _queue_ (also called a "partition" in Slurm). For each job in the queue, Slurm constantly tries to find a computer in the cluster with enough resources to run that job, then when an available computer is found runs the program the job specifies on that computer. As the program runs, Slurm records its output to files and finally reports the program's exit status (either completed or failed) back to the job manager.
 
-Importantly, jobs can either be marked as *interactive* or *batch*. When you submit an interactive job, `sbatch` will pause while waiting for the job to start and then connect you to the program, so you can see its output and enter commands in real time. On the other hand, a *batch* job will return immediately; you can see the progress of your job using `squeue`, and you can typically see the output of the job in the folder from which you ran `sbatch` unless you specify otherwise.
+Importantly, jobs can either be marked as _interactive_ or _batch_. When you submit an interactive job, `sbatch` will pause while waiting for the job to start and then connect you to the program, so you can see its output and enter commands in real time. On the other hand, a _batch_ job will return immediately; you can see the progress of your job using `squeue`, and you can typically see the output of the job in the folder from which you ran `sbatch` unless you specify otherwise.
 Data for or from Slurm work may be stored temporarily on local storage or on user-specific external (remote) storage.
 
 > ℹ️ __Wait, what are "nodes"?__
